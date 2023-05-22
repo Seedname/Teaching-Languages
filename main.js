@@ -2,9 +2,12 @@ let cookie = document.cookie;
 let isEnglish = true;
 
 function setCookie() {
-    if (cookie.substring(cookie.indexOf("=")+1, cookie.length) == "Spanish") {
+    const pos = cookie.indexOf("language=")+9
+    if (cookie.substring(pos, pos+7) == "Spanish") {
         spanish();
         isEnglish = false;
+    } else {
+        english();
     }
 }
 

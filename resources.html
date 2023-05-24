@@ -1,29 +1,53 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>AP WE Service</title>
+        <title>TÚCAN SPEAK</title>
+
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
         <link rel="stylesheet" href="https://use.typekit.net/zvd8nfm.css">
         <link rel="stylesheet" href="main.css">
+        
         <meta name="description" content="">
         <meta name="keywords" content="AI ChatGPT Language Education Teaching"> 
+        <meta charset="UTF-8">
 
+        <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+        <script src="sketches.js" type="text/javascript"></script>
         <script src="main.js"></script> 
+
     </head>
 
     <body onload="setCookie()">
         <div id="header">
-            <div><a href="/"><strong>TUCAN SPEAK</strong></a></div>
+            <div><a href="/"><strong>TÚCAN SPEAK</strong></a></div>
             <div><a href="/">HOME</a></div>
-            <div><a href="/translator.html">TRANSLATOR</a></div> 
+            <div><a href="/about.html">ABOUT</a></div> 
             <div><a href="/resources.html">ADDITIONAL RESOURCES</a></div>
             <div>LANGUAGE:</div>
-            <button onclick="changeLanguage()">
-                <img id="flag"/>
-            </button>
+            <button onclick="changeLanguage()"><img id="flag"/></button>
         </div>
         
-        <div id="footer">
-
+        <br><br>
+        <h1 class="headers">Additional Resources</h1>
+        <div class="pageContainer">
+            <div class="contentWrap">
+                <div class="content">
+                    <strong>FluentU:</strong><br><a target="_blank" href="https://www.fluentu.com/">Language Immersion Online | Learn a Language with Videos | FluentU</a><br>Sitio web y aplicación que utiliza videospara desarrollar habilidades de conversación. Cuesta $29.99 por mes.<br><br>
+                    <strong>BBC Learning English:</strong><br><a target="_blank" href="https://www.bbc.co.uk/learningenglish">BBC Learning English - BBC Learning English - Homepage</a><br>Sitio web que utiliza nuevos artículos y videos para mejorar el dominio del idioma inglés. De uso gratuito.<br><br>
+                    <strong>Duolingo:</strong><br><a target="_blank" href="https://www.duolingo.com/">Duolingo - The world's best way to learn a language</a><br>Sitio web y aplicación que utiliza actividades basados en el lenguaje para ayudar a aprender una variedad de idiomas. El sitio web es de uso gratuito, pero el acceso completo a todas las funciones requiere una suscripción de $6.99 por mes.<br><br>
+                    <strong>British Council:</strong><br><a target="_blank" href="https://learnenglish.britishcouncil.org/">Learn English Online | British Council</a><br>Sitio web que utiliza cursos extensos realizados por los mejores profesores de inglés del mundo. El costo general es gratuito, pero algunos cursos tienen diferentes tarifas.<br><br>
+                    <strong>Cambridge English:</strong><br><a target="_blank" href="https://www.cambridgeenglish.org/learning-english/">Learning English | Cambridge English | Learning English | Cambridge English</a><br>Una colección completa de recursos tanto para estudiantes de inglés como para maestros. También tiene evaluaciones de nivel de inglés. De uso gratuito.<br><br>
+                    <strong>Bussu:</strong><br><a target="_blank" href="https://www.busuu.com/en/course/learn-english-online">Learn English Online: Free Courses for All Levels - Busuu</a><br>Sigue un plan de estudio para una mejor comprensión del Ingles. De uso gratuito, pero puede incluir un plan de pago donde los precios varían.<br><br>
+                    <strong>WordReference:</strong><br><a target="_blank" href="https://forum.wordreference.com/">WordReference Forums</a><br>Sus forums permiten a las personas conversar con usuarios de inglés. De uso gratuito.<br><br>
+                    <strong>Lingua:</strong><br><a target="_blank" href="https://lingua.com/">Lingua.com - Free tools for language learning</a><br>Utiliza varias herramientas para mejorar la comprensión del inglés. El costo es gratuito, pero incluye contenido premium a un precio de $9.99 por año.<br><br>
+                    <strong>Daily Grammar:</strong><br><a target="_blank" href="https://www.dailygrammar.com/index.html">Daily Grammar - Improve your writing with our free grammar lessons</a><br>Utiliza actividades informativas para mejorar la comprensión del inglés. De uso gratuito.<br><br>
+                    <strong>Using English:</strong><br><a target="_blank" href="https://www.usingenglish.com/">UsingEnglish.com: English Language (ESL) Learning Online</a><br>Utiliza una recopilación de recursos para enseñar inglés, hecha por estudiantes. De uso gratuito.<br>
+                </div>
+            </div>
+            <div id="footer"></div>
         </div>
+
+        <img class="overlay" id="overlay3" src="overlay3.png">
     </body>
 </html>

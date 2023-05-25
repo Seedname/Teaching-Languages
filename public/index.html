@@ -36,7 +36,7 @@
                 <br>
                 <div id="headLogo"><img src="logo.png"></div>
                 <br>
-                <div id="chat" style="text-align: center;"><img width="100px" id="loading" src="loading.gif"/></div>
+                <div id="chat" style="text-align: center;"><img width="100px" id="loading" src="loading.gif"/><div id="answer" style="text-align: left;"></div></div>
                 <form id="ask-form" onsubmit="return handleSubmit(event);">
                     <div class="wrap">    
                         <div class="search">
@@ -59,7 +59,7 @@
     <script>
         const form = document.getElementById('ask-form');
         const searchTermInput = document.querySelector("#searchTerm0");
-        const answerElement = document.getElementById('chat');
+        const answerElement = document.getElementById('answer');
 
         async function handleSubmit(event) {
             event.preventDefault();

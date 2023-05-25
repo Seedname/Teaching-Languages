@@ -19,7 +19,7 @@ https.createServer(credentials, app).listen(443);
 app.use(express.static('public'));
 
 const configuration = new Configuration({
-    apiKey: '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',
+    apiKey: '',
 });
   
 // Serve the HTML file

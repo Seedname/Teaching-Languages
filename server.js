@@ -1,13 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { Configuration, OpenAIApi } = require("openai");
-const axios = require('axios');
+const fs = require('fs');
+const http = require('http');
+const https = require('https');
+
+const privateKey  = fs.readFileSync('/etc/letsencrypt/live/tucanspeak.ddns.net/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/tucanspeak.ddns.net/fullchain.pem', 'utf8');
+const credentials = {key: privateKey, cert: certificate};
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Add this line to serve static files
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer(credentials, app);
+
 app.use(express.static('public'));
 
 const configuration = new Configuration({
@@ -47,9 +55,5 @@ app.post('/ask', async (req, res) => {
     }
 });
   
-
-
-const PORT = process.env.PORT || 80;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+httpServer.listen(80);
+httpsServer.listen(443);

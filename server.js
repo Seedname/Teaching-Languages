@@ -7,7 +7,7 @@ const https = require('https');
 
 const privateKey  = fs.readFileSync('/etc/letsencrypt/live/tucanspeak.ddns.net/privkey.pem', 'utf8');
 const certificate = fs.readFileSync('/etc/letsencrypt/live/tucanspeak.ddns.net/fullchain.pem', 'utf8');
-const credentials = {key: privateKey, cert: certificate};
+const credentials = {cert: certificate, key: privateKey};
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,8 +43,8 @@ async function getAiResponse(topic) {
 // Handle the form POST request and get the response from OpenAI API
 app.post('/ask', async (req, res) => {
     try {
-      const searchTerm = req.body.searchTerm;
-  
+      let searchTerm = req.body.searchTerm;
+      searchTerm = "hello";
       // Update this part
       const response = await getAiResponse(searchTerm);
   

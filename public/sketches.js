@@ -130,13 +130,13 @@ var l = window.location.href.split("/")[3].split(".")[0];
 function draw() {
     background(144, 238, 144);
 
-    
+    if (Math.max(document.body.scrollHeight, document.body.offsetHeight, window.innerHeight) != height) {
+        windowResized();
+    }
+
     if (l == "" || l == "index") { 
         toucan.update();
         toucan.display();
-        if (mouseIsPressed) {
-            // console.log(mouseX + ", " + mouseY)
-        }
     }
 }
 

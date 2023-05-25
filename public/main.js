@@ -8,8 +8,8 @@ $(document).ready(function(){
             $("#chat").animate({
                 // top: '78%',
                 height: '300px',
-                width: '45%',
-            });
+                width: '45%'    
+            })
             $(".wrap").animate({
                 width: '50%'
             });

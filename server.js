@@ -5,16 +5,16 @@ const fs = require('fs');
 const http = require('http');
 const https = require('https');
 
-// const privateKey  = fs.readFileSync('/etc/letsencrypt/live/tucanspeak.ddns.net/privkey.pem', 'utf8');
-// const certificate = fs.readFileSync('/etc/letsencrypt/live/tucanspeak.ddns.net/fullchain.pem', 'utf8');
-// const credentials = {cert: certificate, key: privateKey};
+const privateKey  = fs.readFileSync('/etc/letsencrypt/live/tucanspeak.ddns.net/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/tucanspeak.ddns.net/fullchain.pem', 'utf8');
+const credentials = {cert: certificate, key: privateKey};
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.listen(80);
-// https.createServer(credentials, app).listen(443);
+https.createServer(credentials, app).listen(443);
 
 app.use(express.static('public'));
 

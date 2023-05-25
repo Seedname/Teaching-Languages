@@ -166,9 +166,10 @@ html, body {
 }
 
 #chat {
-    color: white;
+    color: black;
     width: 30%;
-    background-color: rgb(100, 100, 100);
+    background-color: rgb(255, 255, 255);
+    border: 3px solid #000;
     /* position: absolute; */
     position: relative;
     text-align: center;

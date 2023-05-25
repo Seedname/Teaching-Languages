@@ -13,8 +13,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const httpServer = http.createServer(app);
-const httpsServer = https.createServer(credentials, app);
+app.listen(80);
+https.createServer(credentials, app).listen(443);
 
 app.use(express.static('public'));
 
@@ -55,5 +55,4 @@ app.post('/ask', async (req, res) => {
     }
 });
   
-httpServer.listen(80);
-httpsServer.listen(443);
+

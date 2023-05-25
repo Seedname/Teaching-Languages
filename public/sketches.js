@@ -7,12 +7,11 @@ class Toucan {
         this.move = false;
         this.movePos = createVector(0,0);
 
-        // this.movePos.set(847, 268);
-        // this.move = true;   
+        this.angle = 0;
     }
 
     moveTo(pos) {
-        this.movePos.set(pos);
+        this.movePos.set(pos.x, pos.y-this.s/2);
         this.move = true;
     }
 
@@ -32,6 +31,7 @@ class Toucan {
             }
             
             this.pos.add(p5.Vector.div(d, 50));
+            this.angle = map(d.y/50, 0, height/50, 0, 1)
         }
         // this.pos.add(this.vel);
     }
@@ -49,17 +49,20 @@ class Toucan {
         if (this.move) {
             push();
                 translate(this.pos.x+60-w/2, this.pos.y + this.s/2+10-h/2);
-                rotate(0.872665/2 * sin(0.0872665*2*frameCount) + 0.4);
+                rotate(0.872665/2 * sin(0.0872665*2*frameCount) + 0.4 - this.angle);
                 image(leftWing, -20, -this.s, this.s * rightWing.width/rightWing.height, this.s);
             pop();
 
-            image(toucanBody, this.pos.x-w/2, this.pos.y-h/2, w, h);
-
+            push();
+                translate(this.pos.x, this.pos.y);
+                rotate(-this.angle);
+                image(toucanBody, -w/2, -h/2, w, h);
+            pop();
             let scale = toucanBody.width/rightWing.width;
 
             push();
                 translate(this.pos.x+70-w/2, this.pos.y + this.s/2+10-h/2);
-                rotate(0.872665/2 * sin(0.0872665*2*frameCount) + 0.9);
+                rotate(0.872665/2 * sin(0.0872665*2*frameCount) + 0.9 - this.angle);
                 image(rightWing, -20, -this.s, this.s * rightWing.width/rightWing.height, this.s);
             
             pop();
@@ -76,7 +79,6 @@ class Toucan {
         }
     }
 }
-
   
 var toucan, toucanBody, leftWing, rightWing, scaleX, scaleY, prevWidth, prevHeight;
 function setup() {
@@ -95,7 +97,8 @@ function setup() {
     toucanRest = loadImage('toucanRest.png');
 
     scaleX = width/1280;
-    scaleY = height/653;
+    // scaleY = height/653;
+    scaleY = 1;
 
     prevWidth = width;
     prevHeight = height;
@@ -107,17 +110,21 @@ function windowResized() {
     var height = Math.max(document.body.scrollHeight, document.body.offsetHeight, window.innerHeight);
 
     resizeCanvas(windowWidth, height); 
-    toucan.pos.set(toucan.pos.x*width/prevWidth, toucan.pos.y*height/prevHeight);
-    toucan.movePos.set(toucan.movePos.x*width/prevWidth, toucan.movePos.y*height/prevHeight)
+    toucan.pos.set(toucan.pos.x*width/prevWidth, toucan.pos.y*width/prevWidth);
+    toucan.movePos.set(toucan.movePos.x*width/prevWidth, toucan.movePos.y*width/prevWidth)
+    // toucan.s = 50 * width/1280;
     prevWidth = width;
     prevHeight = height;
 
     scaleX = width/1280;
     scaleY = height/653;
+    scaleY = width/prevWidth;
 }
 
 function clickOnChat() {
-    toucan.moveTo(createVector(858*scaleX, 315*scaleY));
+    const r = document.getElementById("searchButton").getBoundingClientRect();
+    // print(r.left)
+    toucan.moveTo(createVector(r.left+window.scrollX, r.top+window.scrollY));
 }
 var l = window.location.href.split("/")[3].split(".")[0];
 function draw() {
@@ -128,7 +135,7 @@ function draw() {
         toucan.update();
         toucan.display();
         if (mouseIsPressed) {
-            console.log(mouseX + ", " + mouseY)
+            // console.log(mouseX + ", " + mouseY)
         }
     }
 }

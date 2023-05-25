@@ -44,7 +44,6 @@ async function getAiResponse(topic) {
 app.post('/ask', async (req, res) => {
     try {
       let searchTerm = req.body.searchTerm;
-      searchTerm = "hello";
       // Update this part
       const response = await getAiResponse(searchTerm);
   
